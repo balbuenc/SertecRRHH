@@ -1,0 +1,331 @@
+﻿<%@ Master Language="VB" CodeFile="menu_master.master.vb" Inherits="menu_master" %>
+
+<%@ Register Assembly="Infragistics35.WebUI.UltraWebNavigator.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb"
+    Namespace="Infragistics.WebUI.UltraWebNavigator" TagPrefix="ignav" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Enigma HR | Sertec S.R.L.</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+            text-align: left;
+        }
+        .label
+        {
+            font-family: "Trebuchet MS";
+            font-size: small;
+        }
+        .style2
+        {
+            width: 92%;
+        }
+        .Menu
+        {
+        }
+        .Menu_back
+        {
+            background: #7795BD url(~/images/menu/menu_bg.gif) repeat-x;
+            text-align: center; /* set width if needed.*/
+            width: 200px;
+        }
+        .Menu ul li a
+        {
+            color: black;
+            padding: 4px 2px 4px;
+            padding-left: 8px !important;
+            border: 1px solid #648ABD;
+            border-bottom: 0;
+        }
+        .level1
+        {
+            color: White;
+            background-color: Black;
+            font-variant: small-caps;
+            font-size: large;
+            font-weight: bold;
+        }
+        .level2
+        {
+            color: Blue;
+            font-family: Gill Sans MT !important;
+            font-size: medium;
+            background-color: Gray;
+        }
+        .level3
+        {
+            color: black;
+            background-color: Silver;
+            font-family: Gill Sans MT !important;
+            font-size: small;
+        }
+        .hoverstyle
+        {
+            font-weight: bold;
+        }
+        .level4
+        {
+            background-color: Gray !important;
+            color: White !important;
+            font-size: small;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <table class="style1">
+        <tr>
+            <td valign="top" class="style2">
+                <table>
+                    <tr>
+                        <td style="font-family: 'Trebuchet MS'; font-size: 9pt; color: #006600">
+                            Usuario Conectado:
+                        </td>
+                        <td style="font-family: 'Trebuchet MS'; font-weight: bold; font-size: 9pt; color: #006600;">
+                            <asp:Label ID="lb_user" runat="server"></asp:Label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:Button ID="ButtonRestringed" runat="server" Text="Usuario Restringido" Visible="False" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td valign="top" align="center" rowspan="2">
+                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/extras/logout4.png"
+                    ToolTip="Cerrar Sesion" />
+                <br />
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" StaticMenuItemStyle-VerticalPadding="5"
+                    StaticMenuItemStyle-HorizontalPadding="15" DynamicMenuItemStyle-ItemSpacing="5"
+                    BackColor="#293955" Visible="True" DynamicMenuItemStyle-VerticalPadding="2" Font-Bold="False"
+                    Font-Names="Verdana" Font-Size="Small" ForeColor="White" Width="100%" StaticEnableDefaultPopOutImage="False"
+                    DynamicEnableDefaultPopOutImage="False" Height="30px">
+                    <StaticHoverStyle Font-Bold="False" Font-Names="Verdana" ForeColor="#FFFF66"></StaticHoverStyle>
+                    <DynamicHoverStyle ForeColor="#FFFF66" />
+                    <DynamicMenuItemStyle Font-Names="Verdana" ItemSpacing="3px" VerticalPadding="1px">
+                    </DynamicMenuItemStyle>
+                    <DynamicMenuStyle BackColor="#293955" HorizontalPadding="5px" VerticalPadding="1px" />
+                    <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="1px" Font-Names="Verdana"
+                        ForeColor="White" ItemSpacing="0px"></StaticMenuItemStyle>
+                    <Items>
+                        <asp:MenuItem Text="Datos Primarios" Value="New Item">
+                            <asp:MenuItem Text="Funcionarios" Value="Funcionarios">
+                                <asp:MenuItem NavigateUrl="~/man_funcionarios_tab.aspx" Text="Registro Maestro" Value="Registro">
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="Historico" Value="Historico">
+                                    <asp:MenuItem NavigateUrl="~/man_historial_salarios.aspx" Text="Historico de Salarios"
+                                        Value="Historico de Salarios"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/man_historial_cargos.aspx" Text="Historico de Cargos"
+                                        Value="Historico de Cargos"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/man_historial_area.aspx" Text="Historico de Areas" Value="Historico de Areas">
+                                    </asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/man_historial_ausencias.aspx" Text="Historico de Ausencias"
+                                        Value="Historico de Ausencias"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/man_historial_vacaciones.aspx" Text="Historico de Vacaciones"
+                                        Value="Historico de Vacaciones"></asp:MenuItem>
+                                </asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Conceptos - Variables" Value="Conceptos - Variables">
+                                <asp:MenuItem NavigateUrl="~/man_conceptos.aspx" Text="Registro de Conceptos" Value="Registro de Conceptos">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_variables.aspx" Text="Registro de Variables" Value="Registro de Variables">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_tipos_liquidaciones_conceptos.aspx" Text="Conceptos por Tipo de Liquidacion"
+                                    Value="Conceptos por Tipo de Liquidacion"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_conceptos_funcionarios.aspx" Text="Conceptos por Funcionario"
+                                    Value="Conceptos por Funcionario"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Parametros Generales" Value="Parametros Generales">
+                                <asp:MenuItem NavigateUrl="~/man_empresas.aspx" Text="Empresas" Value="Empresas">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_gerencias.aspx" Text="Gerencias" Value="Gerencias">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_areas.aspx" Text="Areas" Value="Areas"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_cargos.aspx" Text="Cargos" Value="Cargos"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_centros_costos.aspx" Text="Centro de Costos" Value="Centro de Costos">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_categorias_mjt.aspx" Text="Categorias Min. de Justicia y Trabajo"
+                                    Value="Categorias Min. de Justicia y Trabajo"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_contratos.aspx" Text="Contratos" Value="Contratos">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_niveles_salariales.aspx" Text="Niveles Salariales"
+                                    Value="Niveles Salariales"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_niveles_jerarquicos.aspx" Text="Niveles Jerárquicos"
+                                    Value="Niveles Jerárquicos"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_tipos_liquidaciones.aspx" Text="Tipos de Liquidacion"
+                                    Value="Tipos de Liquidacion"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_monedas.aspx" Text="Monedas" Value="Monedas"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_cotizaciones.aspx" Text="Cotizaciones" Value="Cotizaciones">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_tipos_sanciones.aspx" Text="Tipos de Sanciones"
+                                    Value="Tipos de Sanciones"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_causas_egresos.aspx" Text="Causas Egresos" Value="Causas Egresos">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_nacionalidades.aspx" Text="Nacionalidades" Value="Nacionalidades">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_regiones.aspx" Text="Regiones" Value="Regiones">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_departamentos.aspx" Text="Departamentos" Value="Departamentos">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_bancos.aspx" Text="Bancos" Value="Bancos"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_budget.aspx" Text="Budget" Value="Budget"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_send_mail.aspx" Text="Mails" Value="Mails"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/escala_hay.aspx" Text="Escala Grados HAY" Value="Escala Grados HAY">
+                                </asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Prestamos" Value="Prestamos">
+                                <asp:MenuItem NavigateUrl="~/Prestamos.aspx" Text="Administrar Prestamos" 
+                                    Value="Administrar Prestamos"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_funcionarios_prestamos.aspx" 
+                                    Text="Prestamos funcionarios" Value="Prestamos funcionarios"></asp:MenuItem>
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Liquidaciones" Value="New Item">
+                            <asp:MenuItem NavigateUrl="~/generar_liquidacion.aspx" Text="Generar Liquidación Mensual"
+                                Value="Generar Liquidación Mensual"></asp:MenuItem>
+                           <%-- <asp:MenuItem NavigateUrl="~/home.aspx?accion=novedades" Text="Importar Conceptos Manuales"
+                                Value="Importar Conceptos Manuales"></asp:MenuItem>--%>
+                             <asp:MenuItem NavigateUrl="~/man_novedades.aspx" Text="Importar Conceptos Manuales"
+                                Value="Importar Conceptos Manuales"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/borrar_liquidacion.aspx" Text="Borrar Liquidacion Mensual"
+                                Value="Borrar Liquidacion Mensual"></asp:MenuItem>
+                            <asp:MenuItem Text="Diskettes" Value="Diskettes">
+                                <asp:MenuItem NavigateUrl="~/diskettes_banco.aspx" Text="Banco" Value="Banco"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/diskette_IPS.aspx" Text="Instituo de Previsión Social"
+                                    Value="Instituo de Previsión Social"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/diskette_canasta.aspx" Text="Envio Ticket Canasta" Value="Envio Ticket Canasta">
+                                </asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Liq. Aguinaldo" Value="New Item">
+                                <asp:MenuItem NavigateUrl="~/generar_liquidacion_aguinaldo.aspx" Text="Generar Liquidación"
+                                    Value="Generar Liquidación"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/borrar_liquidacion_aguinaldo.aspx" Text="Borrar Liquidación"
+                                    Value="Borrar Liquidación"></asp:MenuItem>
+                                    <asp:MenuItem Text="Diskettes" Value="Diskettes">
+                                    <asp:MenuItem NavigateUrl="~/diskettes_banco_aguinaldo.aspx" Text="Banco" Value="Banco"></asp:MenuItem>
+                                    </asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Liq. Egreso" Value="New Item">
+                                <asp:MenuItem NavigateUrl="~/generar_liquidacion_egreso.aspx" Text="Generar Liquidación"
+                                    Value="Generar Liquidación"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/borrar_liquidacion_egreso.aspx" Text="Borrar Liquidación"
+                                    Value="Borrar Liquidación"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Pagos Manuales" Value="Pagos Manuales">
+                                <asp:MenuItem NavigateUrl="~/man_pagos_manuales.aspx" Text="Cargar Pago Funcionario" Value="Cargar Pago Funcionario"></asp:MenuItem>
+                                <%--<asp:MenuItem Text="Generar Pago" Value="Generar Pago" NavigateUrl="~/man_pagos_manuales_diskett.aspx" ></asp:MenuItem>--%>
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Info" Value="New Item">
+                            <asp:MenuItem NavigateUrl="~/man_parametros.aspx" Text="Parámetros del Sistema" Value="Parámetros del Sistema">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Seguridad" Value="Seguidad">
+                            <asp:MenuItem NavigateUrl="~/ChangePassword.aspx" Text="Cambio de Contraseña" Value="Cambio de Contraseña">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Reportes" Value="Reportes">
+                            <asp:MenuItem Text="Liquidación Mensual" Value="Liquidación Mensual">
+                                <asp:MenuItem NavigateUrl="~/rpt_planilla_liquidacion.aspx" Text="Planilla de Liquidación"
+                                    Value="Planilla de Liquidación"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rpt_recibo_liquidacion.aspx" Text="Recibos de Liquidación"
+                                    Value="Recibos de Liquidación"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rpt_recibo_gourmet.aspx" Text="Recibos de Liquidación Billetera"
+                                    Value="Recibos de Liquidación Billetera"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Liquidación Aguinaldo" Value="Liquidación Aguinaldo">
+                                <asp:MenuItem NavigateUrl="~/rpt_recibo_liquidacion_aguinaldo.aspx" Text="Recibos de Liquidación"
+                                    Value="Recibos de Liquidación"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Liquidación Egresos" Value="Liquidación Egresos">
+                                <asp:MenuItem NavigateUrl="~/rpt_recibo_liquidacion_egreso.aspx" Text="Recibos de Liquidación"
+                                    Value="Recibos de Liquidación"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Notificación de Vacaciones" Value="Notificación de Vacaciones">
+                                <asp:MenuItem NavigateUrl="~/rpt_notificacion_vacaciones.aspx" Text="Notificación"
+                                    Value="Notificación"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Contratos" Value="Contratos">
+                                <asp:MenuItem NavigateUrl="~/rpt_contrato_individual.aspx" Text="Contrato Individual"
+                                    Value="Contrato Individual"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rpt_contrato_pasantia.aspx" Text="Contrato de Pasantía"
+                                    Value="Contrato de Pasantía"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rpt_compromiso_confidencialidad.aspx" Text="Compromiso de Confidencialidad"
+                                    Value="Compromiso de Confidencialidad"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rpt_reglamento_interno.aspx" Text="Reglamento Interno"
+                                    Value="Reglamento Interno"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Certificados" Value="Certificados">
+                                <asp:MenuItem NavigateUrl="~/rpt_certificado_horario_laboral.aspx" Text="Horario Laboral"
+                                    Value="Horario Laboral"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rpt_certificado_remuneracion.aspx" Text="Remuneración"
+                                    Value="Remuneración"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rpt_certificado_comisiones.aspx" Text="Comisiones" Value="Comisiones">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rpt_certificado_ingreso_egreso.aspx" Text="Ingreso / Egreso"
+                                    Value="Ingreso / Egreso"></asp:MenuItem>
+                                 <asp:MenuItem NavigateUrl="http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fPayrollSSRS%2fDotacionGeneral&rs:Command=Render" Text="Dotación General"
+                                    Value="Dotación General" Target="_blank"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Reportes para M.J.T." Value="Reportes para M.J.T.">
+                               <asp:MenuItem Text="Mensual" Value="Mensual">
+                                    <asp:MenuItem NavigateUrl="~/rpt_sueldos_jornales_mensual.aspx" Text="Sueldos y Jornales"
+                                        Value="Sueldos y Jornales"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/rpt_empleados_obreros.aspx" Text="Empleados y Obreros"
+                                        Value="Empleados y Obreros"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/rpt_personas_ocupadas_mensual.aspx" Text="Personas Ocupadas"
+                                        Value="Personas Ocupadas"></asp:MenuItem>
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="Semestral" Value="Semestral">
+                                    <asp:MenuItem NavigateUrl="~/rpt_sueldos_jornales_semestral.aspx" Text="Sueldos y Jornales"
+                                        Value="Sueldos y Jornales"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/rpt_empleados_obreros_semestral.aspx" Text="Empleados y Obreros"
+                                        Value="Empleados y Obreros"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/rpt_registro_personas_ocupadas.aspx" Text="Personas Ocupadas"
+                                        Value="Personas Ocupadas"></asp:MenuItem>
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="Anual" Value="Anual">
+                                    <asp:MenuItem NavigateUrl="~/rpt_sueldos_jornales_anual.aspx" Text="Planilla MJT"
+                                        Value="Plamilla MJT"></asp:MenuItem>
+                                </asp:MenuItem>
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Integración" Value="Integración">
+                            <asp:MenuItem NavigateUrl="~/home.aspx?accion=exportar" Text="Exportar al Almacen de Datos"
+                                Value="Exportar al Almacen de Datos"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="http://asusisv-rrhh:20000/Informes" Text="Reportes Gerenciales"
+                                Value="Reportes Gerenciales"></asp:MenuItem>
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+                <br />
+            </td>
+        </tr>
+        <tr>
+            <td class="style2">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td class="style2">
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>

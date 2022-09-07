@@ -1,0 +1,525 @@
+﻿<%@ Master Language="VB" CodeFile="menu_master.master.vb" Inherits="menu_master" %>
+
+<%@ Register Assembly="Infragistics35.WebUI.UltraWebNavigator.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb"
+    Namespace="Infragistics.WebUI.UltraWebNavigator" TagPrefix="ignav" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>..: ParaPayrollWeb :..</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+            text-align: left;
+        }
+        .label
+        {
+            font-family: "Trebuchet MS";
+            font-size: small;
+        }
+        .style2
+        {
+            width: 92%;
+        }
+        .Menu
+        {
+        }
+        .Menu_back
+        {
+            background: #7795BD url(~/images/menu/menu_bg.gif) repeat-x;
+            text-align: center; /* set width if needed.*/
+            width: 200px;
+        }
+        .Menu ul li a
+        {
+            color: black;
+            padding: 4px 2px 4px;
+            padding-left: 8px !important;
+            border: 1px solid #648ABD;
+            border-bottom: 0;
+        }
+        .level1
+        {
+            color: White;
+            background-color: Black;
+            font-variant: small-caps;
+            font-size: large;
+            font-weight: bold;
+        }
+        .level2
+        {
+            color: Blue;
+            font-family: Gill Sans MT !important;
+            font-size: medium;
+            background-color: Gray;
+        }
+        .level3
+        {
+            color: black;
+            background-color: Silver;
+            font-family: Gill Sans MT !important;
+            font-size: small;
+        }
+        .hoverstyle
+        {
+            font-weight: bold;
+        }
+        .level4
+        {
+            background-color: Gray !important;
+            color: White !important;
+            font-size: small;
+        }
+    </style>
+</head>
+<body background="images/fondo16.jpg">
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <table class="style1">
+        <tr>
+            <td valign="top" class="style2">
+                <table>
+                    <tr>
+                        <td style="font-family: 'Trebuchet MS'; font-size: 9pt; color: #006600">
+                            Usuario Conectado:
+                        </td>
+                        <td style="font-family: 'Trebuchet MS'; font-weight: bold; font-size: 9pt; color: #006600;">
+                            <asp:Label ID="lb_user" runat="server"></asp:Label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:Button ID="ButtonRestringed" runat="server" Text="Usuario Restringido" Visible="False" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td valign="top" align="center" rowspan="2">
+                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/extras/logout4.png"
+                    ToolTip="Cerrar Sesion" />
+                <br />
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" StaticMenuItemStyle-VerticalPadding="5"
+                    StaticMenuItemStyle-HorizontalPadding="10" CssClass="Menu_back" 
+                    DynamicMenuItemStyle-ItemSpacing="5" Visible="False">
+                    <StaticMenuItemStyle HorizontalPadding="10px" VerticalPadding="5px"></StaticMenuItemStyle>
+                    <DynamicMenuItemStyle ItemSpacing="3px"></DynamicMenuItemStyle>
+                    <Items>
+                        <asp:MenuItem Text="Datos Primarios" Value="New Item">
+                            <asp:MenuItem Text="Funcionarios" Value="Funcionarios">
+                                <asp:MenuItem NavigateUrl="~/man_funcionarios_tab.aspx" Text="Registro Maestro" Value="Registro">
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="Historico" Value="Historico">
+                                    <asp:MenuItem NavigateUrl="~/man_historial_salarios.aspx" Text="Historico de Salarios"
+                                        Value="Historico de Salarios"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/man_historial_cargos.aspx" Text="Historico de Cargos"
+                                        Value="Historico de Cargos"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/man_historial_area.aspx" Text="Historico de Areas" Value="Historico de Areas">
+                                    </asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/man_historial_ausencias.aspx" Text="Historico de Ausencias"
+                                        Value="Historico de Ausencias"></asp:MenuItem>
+                                </asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Conceptos - Variables" Value="Conceptos - Variables">
+                                <asp:MenuItem NavigateUrl="~/man_conceptos.aspx" Text="Registro de Conceptos"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_variables.aspx" Text="Registro de Variables"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_tipos_liquidaciones_conceptos.aspx" Text="Conceptos por Tipo de Liquidacion">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_conceptos_funcionarios.aspx" Text="Conceptos por Funcionario">
+                                </asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Parametros Generales" Value="Parametros Generales">
+                                <asp:MenuItem NavigateUrl="~/man_empresas.aspx" Text="Empresas"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_gerencias.aspx" Text="Gerencias" Value="Gerencias">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_areas.aspx" Text="Areas"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_centros_costos.aspx" Text="Centro de Costos"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_categorias_mjt.aspx" Text="Categorias Min. de Justicia y Trabajo">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_contratos.aspx" Text="Contratos"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_niveles_salariales.aspx" Text="Niveles Salariales">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_niveles_jerarquicos.aspx" Text="Niveles Jerárquicos">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_tipos_liquidaciones.aspx" Text="Tipos de Liquidacion">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_monedas.aspx" Text="Monedas"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_cotizaciones.aspx" Text="Cotizaciones"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_tipos_sanciones.aspx" Text="Tipos de Sanciones">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_causas_egresos.aspx" Text="Causas Egresos"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_nacionalidades.aspx" Text="Nacionalidades"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_regiones.aspx" Text="Regiones"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_departamentos.aspx" Text="Departamentos"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_bancos.aspx" Text="Bancos"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/man_budget.aspx" Text="Budget"></asp:MenuItem>
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Liquidaciones" Value="New Item">
+                            <asp:MenuItem NavigateUrl="~/generar_liquidacion.aspx" Text="Generar Liquidación Mensual"
+                                Value="Generar Liquidación Mensual"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/home.aspx?accion=novedades" Text="Importar Conceptos Manuales"
+                                Value="Importar Conceptos Manuales"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/borrar_liquidacion.aspx" Text="Borrar Liquidacion Mensual"
+                                Value="Borrar Liquidacion Mensual"></asp:MenuItem>
+                            <asp:MenuItem Text="Diskettes" Value="Diskettes">
+                                <asp:MenuItem NavigateUrl="~/diskettes_banco.aspx" Text="Banco" Value="Banco"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/diskette_IPS.aspx" Text="Instituo de Previsión Social"
+                                    Value="Instituo de Previsión Social"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Liq. Aguinaldo" Value="New Item">
+                                <asp:MenuItem NavigateUrl="~/generar_liquidacion_aguinaldo.aspx" Text="Generar Liquidación"
+                                    Value="Generar Liquidación"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/borrar_liquidacion_aguinaldo.aspx" Text="Borrar Liquidación"
+                                    Value="Borrar Liquidación"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Liq. Egreso" Value="New Item">
+                                <asp:MenuItem NavigateUrl="~/generar_liquidacion_egreso.aspx" Text="Generar Liquidación"
+                                    Value="Generar Liquidación"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/borrar_liquidacion_egreso.aspx" Text="Borrar Liquidación"
+                                    Value="Borrar Liquidación"></asp:MenuItem>
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Info" Value="New Item">
+                            <asp:MenuItem NavigateUrl="~/man_parametros.aspx" Text="Parámetros del Sistema" Value="Parámetros del Sistema">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Seguridad" Value="Seguidad">
+                            <asp:MenuItem NavigateUrl="~/ChangePassword.aspx" Text="Cambio de Contraseña" Value="Cambio de Contraseña">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Reportes" Value="Reportes">
+                            <asp:MenuItem Text="Liquidación Mensual" Value="Liquidación Mensual">
+                                <asp:MenuItem NavigateUrl="~/rpt_planilla_liquidacion.aspx" Text="Planilla de Liquidación"
+                                    Value="Planilla de Liquidación"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rpt_recibo_liquidacion.aspx" Text="Recibos de Liquidación"
+                                    Value="Recibos de Liquidación"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Liquidación Aguinaldo" Value="Liquidación Aguinaldo"></asp:MenuItem>
+                            <asp:MenuItem Text="Liquidación Egresos" Value="Liquidación Egresos"></asp:MenuItem>
+                            <asp:MenuItem Text="Notificación de Vacaciones" Value="Notificación de Vacaciones">
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Contratos" Value="Contratos"></asp:MenuItem>
+                            <asp:MenuItem Text="Certificados" Value="Certificados"></asp:MenuItem>
+                            <asp:MenuItem Text="Reportes para M.J.T." Value="Reportes para M.J.T."></asp:MenuItem>
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+                <br />
+                <ignav:UltraWebMenu ID="UltraWebMenu1" runat="server" BackColor="#DCD9AC" BorderWidth="0px"
+                    FileUrl="" JavaScriptFilename="" JavaScriptFileNameCommon="" TopAligment="Center"
+                    TopItemSpacing="Compact" DisabledClass="" TopSelectedClass="" 
+                    Style="font-size: small">
+                    <Styles>
+                        <ignav:Style BackColor="#F4B647" BorderColor="#93A070" BorderStyle="Solid" BorderWidth="1px"
+                            CssClass="TopHover10" Cursor="Default" Font-Names="Arial" Font-Size="8pt" ForeColor="White">
+                            <Margin Bottom="0px" Left="0px" Right="0px" Top="0px" />
+                            <BorderDetails ColorBottom="255, 128, 0" ColorLeft="255, 128, 0" ColorRight="255, 128, 0"
+                                ColorTop="255, 128, 0" StyleBottom="Solid" StyleLeft="Solid" StyleRight="Solid"
+                                StyleTop="Solid" WidthBottom="1px" WidthLeft="1px" WidthRight="1px" WidthTop="1px" />
+                        </ignav:Style>
+                        <ignav:Style BackColor="#DCD9AC" BackgroundImage="None" BorderColor="#DCD9AC" BorderStyle="Solid"
+                            BorderWidth="1px" CssClass="TopClass10" Font-Names="Arial" Font-Size="8pt" ForeColor="Black">
+                            <BorderDetails WidthBottom="1px" WidthLeft="1px" WidthRight="1px" WidthTop="1px" />
+                        </ignav:Style>
+                    </Styles>
+                    <IslandStyle BackColor="WhiteSmoke" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px"
+                        Cursor="Default" Font-Names="MS Sans Serif" Font-Size="8pt" ForeColor="Black">
+                    </IslandStyle>
+                    <TopSelectedStyle BackColor="DarkKhaki" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px"
+                        ForeColor="Black">
+                    </TopSelectedStyle>
+                    <HoverItemStyle BackColor="#FCEFC3" BorderColor="#93A070" BorderStyle="Solid" BorderWidth="0px"
+                        Cursor="Default" ForeColor="Black">
+                    </HoverItemStyle>
+                    <Images>
+                        <ScrollTopDisabledImage Url="ig_menuGreenUp_disabled.gif" />
+                        <ScrollBottomDisabledImage Url="ig_menuGreenDown_disabled.gif" />
+                        <SubMenuImage Url="ig_menuTri.gif" />
+                        <ScrollBottomImage Url="ig_menuGreenDown.gif" />
+                        <ScrollTopImage Url="ig_menuGreenUp.gif" />
+                        <XPSpacerImage Url="ig_menu2003SpacerOlive.gif" />
+                    </Images>
+                    <ItemStyle BorderColor="Transparent" BorderStyle="Solid" BorderWidth="0px" />
+                    <Items>
+                        <ignav:Item Text="Datos Primarios">
+                            <Items>
+                                <ignav:Item TargetUrl="" Text="Funcionarios">
+                                    <Items>
+                                        <ignav:Item TargetUrl="~/man_funcionarios_tab.aspx" Text="Registro">
+                                        </ignav:Item>
+                                        <ignav:Item Separator="True" Text="">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_historial_salarios.aspx" Text="Histórico de Salarios">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_historial_cargos.aspx" Text="Histórico de Cargos">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_historial_area.aspx" Text="Histórico de Areas">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_historial_ausencias.aspx" Text="Histórico de Ausencias">
+                                        </ignav:Item>
+                                    </Items>
+                                </ignav:Item>
+                                <ignav:Item Text="Conceptos - Variables">
+                                    <Items>
+                                        <ignav:Item TargetUrl="~/man_conceptos.aspx" Text="Registro de Conceptos">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_variables.aspx" Text="Registro de Variables">
+                                        </ignav:Item>
+                                        <ignav:Item Separator="True" Text="">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_tipos_liquidaciones_conceptos.aspx" Text="Conceptos por Tipo de Liquidación">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_conceptos_funcionarios.aspx" Text="Conceptos por Funcionario">
+                                        </ignav:Item>
+                                    </Items>
+                                </ignav:Item>
+                                <ignav:Item Text="Parámetros Generales">
+                                    <Items>
+                                        <ignav:Item TargetUrl="~/man_empresas.aspx" Text="Empresas">
+                                        </ignav:Item>
+                                        <ignav:Item Separator="True" Text="">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_gerencias.aspx" Text="Gerencias">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_areas.aspx" Text="Areas">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_centros_costos.aspx" Text="Centro de Costos">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_cargos.aspx" Text="Cargos">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_categorias_mjt.aspx" Text="Categorias Min. de Justicia y Trabajo">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_contratos.aspx" Text="Contratos">
+                                        </ignav:Item>
+                                        <ignav:Item Separator="True" Text="">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_niveles_salariales.aspx" Text="Niveles Salariales">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_niveles_jerarquicos.aspx" Text="Niveles Jerárquicos">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_tipos_liquidaciones.aspx" Text="Tipos de Liquidaciones">
+                                        </ignav:Item>
+                                        <ignav:Item Separator="True" Text="">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_monedas.aspx" Text="Monedas">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_cotizaciones.aspx" Text="Cotizaciones">
+                                        </ignav:Item>
+                                        <ignav:Item Separator="True" Text="">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_tipos_sanciones.aspx" Text="Tipos de Sanciones">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_causas_egresos.aspx" Text="Causas Egresos">
+                                        </ignav:Item>
+                                        <ignav:Item Separator="True" Text="">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_nacionalidades.aspx" Text="Nacionalidades">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_regiones.aspx" Text="Regiones">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_departamentos.aspx" Text="Departamentos">
+                                        </ignav:Item>
+                                        <ignav:Item Separator="True" Text="">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_bancos.aspx" Text="Bancos">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/man_budget.aspx" Text="Budget">
+                                        </ignav:Item>
+                                        <ignav:Item Text="">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="man_send_mail.aspx" Text="Mails">
+                                        </ignav:Item>
+                                    </Items>
+                                </ignav:Item>
+                            </Items>
+                        </ignav:Item>
+                        <ignav:Item Text="Liq. Mensual">
+                            <Items>
+                                <ignav:Item TargetUrl="~/generar_liquidacion.aspx" Text="Generar Liquidación Mensual">
+                                </ignav:Item>
+                                <ignav:Item TargetUrl="~/home.aspx?accion=novedades" Text="Importar Conceptos Manuales">
+                                </ignav:Item>
+                                <ignav:Item TargetUrl="~/borrar_liquidacion.aspx" Text="Borrar Liquidacion Mensual">
+                                </ignav:Item>
+                                <ignav:Item Text="Diskettes">
+                                    <Items>
+                                        <ignav:Item TargetUrl="~/diskettes_banco.aspx" Text="Envio a Banco Guaranies y Doláres">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/diskette_IPS.aspx" Text="Envio a I.P.S.">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/diskette_canasta.aspx" Text="Envio a Banco Ticket Canasta">
+                                        </ignav:Item>
+                                    </Items>
+                                </ignav:Item>
+                            </Items>
+                        </ignav:Item>
+                        <ignav:Item Text="Liq. Aguinaldo">
+                            <Items>
+                                <ignav:Item Text="Generar Liquidación Aguinaldo" TargetUrl="~/generar_liquidacion_aguinaldo.aspx">
+                                </ignav:Item>
+                                <ignav:Item Text="Borrar Liquidación Aguinaldo" TargetUrl="~/borrar_liquidacion_aguinaldo.aspx">
+                                </ignav:Item>
+                                <ignav:Item Text="Diskette">
+                                    <Items>
+                                        <ignav:Item Text="Generar Diskette" TargetUrl="~/diskettes_banco_aguinaldo.aspx">
+                                        </ignav:Item>
+                                    </Items>
+                                </ignav:Item>
+                            </Items>
+                        </ignav:Item>
+                        <ignav:Item Text="Liq. Egreso">
+                            <Items>
+                                <ignav:Item TargetUrl="~/generar_liquidacion_egreso.aspx" Text="Generar Liquidación Egreso">
+                                </ignav:Item>
+                                <ignav:Item TargetUrl="~/borrar_liquidacion_egreso.aspx" Text="Borrar Liquidación Egreso">
+                                </ignav:Item>
+                            </Items>
+                        </ignav:Item>
+                        <ignav:Item Text="Reportes">
+                            <Items>
+                                <ignav:Item Text="Liquidación Mensual">
+                                    <Items>
+                                        <ignav:Item TargetUrl="~/rpt_planilla_liquidacion.aspx" Text="Emitir Planilla de Liquidación">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/rpt_recibo_liquidacion.aspx" Text="Emitir Recibos de Liquidación">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/rpt_recibo_gourmet.aspx" Text="Emitir Recibos de Gourmet Card">
+                                        </ignav:Item>
+                                    </Items>
+                                </ignav:Item>
+                                <ignav:Item Text="Liquidación Aguinaldo">
+                                    <Items>
+                                        <ignav:Item Text="Emitir Recibos de Liquidación" TargetUrl="~/rpt_recibo_liquidacion_aguinaldo.aspx">
+                                        </ignav:Item>
+                                    </Items>
+                                </ignav:Item>
+                                <ignav:Item Text="Liquidación Egreso">
+                                    <Items>
+                                        <ignav:Item Text="Emitir Recibos de Liquidación" TargetUrl="~/rpt_recibo_liquidacion_egreso.aspx">
+                                        </ignav:Item>
+                                    </Items>
+                                </ignav:Item>
+                                <ignav:Item Text="Notificación de Vacaciones">
+                                    <Items>
+                                        <ignav:Item TargetUrl="~/rpt_notificacion_vacaciones.aspx" Text="Emisión de Notificación">
+                                        </ignav:Item>
+                                    </Items>
+                                </ignav:Item>
+                                <ignav:Item Text="Contratos">
+                                    <Items>
+                                        <ignav:Item TargetUrl="~/rpt_contrato_individual.aspx" Text="Emitir Contrato Individual">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/rpt_contrato_pasantia.aspx" Text="Emitir Contrato de Pasantía">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/rpt_compromiso_confidencialidad.aspx" Text="Compromiso de Confidencialidad">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/rpt_reglamento_interno.aspx" Text="Reglamento Interno">
+                                        </ignav:Item>
+                                    </Items>
+                                </ignav:Item>
+                                <ignav:Item Text="Certificados">
+                                    <Items>
+                                        <ignav:Item TargetUrl="~/rpt_certificado_horario_laboral.aspx" Text="Certificado de Horario Laboral">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/rpt_certificado_remuneracion.aspx" Text="Certificado de Remuneración">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/rpt_certificado_comisiones.aspx" Text="Certificado de Comisiones">
+                                        </ignav:Item>
+                                        <ignav:Item TargetUrl="~/rpt_certificado_ingreso_egreso.aspx" Text="Certificado de Ingreso/Egreso">
+                                        </ignav:Item>
+                                    </Items>
+                                </ignav:Item>
+                                <ignav:Item Text="Reportes para MJT">
+                                    <Items>
+                                        <ignav:Item Text="Mensual">
+                                            <Items>
+                                                <ignav:Item TargetUrl="~/rpt_sueldos_jornales_mensual.aspx" Text="Sueldos y Jornales">
+                                                </ignav:Item>
+                                                <ignav:Item TargetUrl="~/rpt_empleados_obreros.aspx" Text="Empleados y Obreros">
+                                                </ignav:Item>
+                                                <ignav:Item TargetUrl="~/rpt_personas_ocupadas_mensual.aspx" Text="Registro de Personas Ocupadas">
+                                                </ignav:Item>
+                                            </Items>
+                                        </ignav:Item>
+                                        <ignav:Item Text="Semestral">
+                                            <Items>
+                                                <ignav:Item TargetUrl="~/rpt_sueldos_jornales_semestral.aspx" Text="Sueldos y Jornales">
+                                                </ignav:Item>
+                                                <ignav:Item TargetUrl="~/rpt_empleados_obreros_semestral.aspx" Text="Empleados y Obreros">
+                                                </ignav:Item>
+                                                <ignav:Item TargetUrl="~/rpt_registro_personas_ocupadas.aspx" Text="Registro de Personas Ocupadas">
+                                                </ignav:Item>
+                                            </Items>
+                                        </ignav:Item>
+                                        <ignav:Item Text="Anual">
+                                            <Items>
+                                                <ignav:Item TargetUrl="~/rpt_sueldos_jornales_anual.aspx" Text="Generar Planilla MJT">
+                                                </ignav:Item>
+                                            </Items>
+                                        </ignav:Item>
+                                    </Items>
+                                </ignav:Item>
+                            </Items>
+                        </ignav:Item>
+                        <ignav:Item Text="Info">
+                            <Items>
+                                <ignav:Item TargetUrl="~/man_parametros.aspx" Text="Parámetros del Sistema">
+                                </ignav:Item>
+                            </Items>
+                        </ignav:Item>
+                        <ignav:Item Text="Integración">
+                            <Items>
+                                <ignav:Item TargetUrl="~/home.aspx?accion=exportar" Text="Exportar Datos - Almacén de datos">
+                                </ignav:Item>
+                                <ignav:Item TargetUrl="http://asusisv-rrhh:20000/Informes" Text="Reportes Gerenciales">
+                                </ignav:Item>
+                            </Items>
+                        </ignav:Item>
+                        <ignav:Item Text="Seguridad">
+                            <Items>
+                                <ignav:Item Text="Cambiar Password" TargetUrl="~/ChangePassword.aspx">
+                                </ignav:Item>
+                            </Items>
+                        </ignav:Item>
+                    </Items>
+                    <DisabledStyle ForeColor="LightGray">
+                    </DisabledStyle>
+                    <Levels>
+                        <ignav:Level Index="0" />
+                        <ignav:Level Index="1" />
+                        <ignav:Level Index="2" />
+                        <ignav:Level Index="3" />
+                        <ignav:Level Index="4" />
+                    </Levels>
+                    <SeparatorStyle BackgroundImage="ig_menuSep.gif" CustomRules="background-repeat:repeat-x; " />
+                    <ExpandEffects ShadowColor="Black" Type="Slide"></ExpandEffects>
+                    <MenuClientSideEvents InitializeMenu="" ItemChecked="" ItemClick="" SubMenuDisplay=""
+                        ItemHover=""></MenuClientSideEvents>
+                </ignav:UltraWebMenu>
+            </td>
+        </tr>
+        <tr>
+            <td class="style2">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td class="style2">
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>
